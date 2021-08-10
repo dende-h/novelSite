@@ -16,17 +16,33 @@
 	<body>
 		<div class="row align-items-start">
 		<div class="col">One of three columns</div>
-    	<div class="col"><h4>初めての方は新規登録</h4></div>
+    	<div class="col"></div>
     	<div class="col">One of three columns</div>
 		</div>
 		<div class="row align-items-center">
 		<div class="col">
 		</div>
 		<div class="col">
-			<div class="d-grid gap-2 col-6">
-				<button class="btn btn-primary" type="button">新規登録</button>
-				<button class="btn btn-primary" type="button">ログイン</button>
-			</div>
+			<h4>初めての方は新規登録</h4>
+			<form th:action = "@{/singup}" th:method = "get">
+				<div class="d-grid gap-2 col-6">
+					<button class="btn btn-primary" type="submit">新規登録</button>
+				</div>
+			</form>
+			<br><br><br>
+			<h4>登録済みの方はここからログイン</h4>
+			<br>
+			<form th:action = "@{/login}" th:method = "get">
+				<div class="d-grid gap-2 col-6">
+					<div>
+						Pen Name : <input type="text"/>
+					</div>
+					<div>
+						Psaa Word : <input type="text"/>
+					</div>
+					<button class="btn btn-primary" type="submit">ログイン</button>
+				</div>
+			</form>
 		</div>
 		<div class="col">
 		</div>
