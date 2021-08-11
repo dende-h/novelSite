@@ -16,9 +16,11 @@
 	<body>
 		<div class="container">
 			<div class="row align-items-center">
+				<div class="col"></div>
 				<div class="col">
+					<br>
 					<h4>新規登録情報入力フォーム</h4>
-					<form th:action = "@{/}" th:method = "get">
+					<form th:action = "@{/input/check}" th:method = "post">
 						<div class="d-grid gap-2 col-6">
 							<div class="mb-3">
 								<label for="penNameInput" class="form-label">Pen Name</label>
@@ -141,11 +143,6 @@
 									<option value="2023">2023</option>
 									<option value="2024">2024</option>
 									<option value="2025">2025</option>
-									<option value="2026">2026</option>
-									<option value="2027">2027</option>
-									<option value="2028">2028</option>
-									<option value="2029">2029</option>
-									<option value="2030">2030</option>
 								</select>
 								<select class="form-select" id="userCategorySelect">
 									<option selected>月</option>
@@ -210,7 +207,6 @@
 						</div>
 					</form>
 				</div>
-				<div class="col"></div>
 				<div class="col"></div>
 			</div>
 		</div>
