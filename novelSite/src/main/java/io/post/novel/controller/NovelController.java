@@ -12,9 +12,29 @@ public class NovelController {
 	@Autowired
 	NovelService novelService;
 	
+	/*
+	 * @return トップ画面
+	 */
 	@GetMapping(value = "/top")
 	public String topDislay(){
 		return "top";
 	}
+	
+	
+	/*
+	 * @return サインアップフォーム
+	 */
+	@GetMapping(value = "/signup")
+	public String signUpForm() {
+		return "sign_up_form";
+	}
+	
+	
+	
+	
+	
+	
+	
+	
 	
 }
