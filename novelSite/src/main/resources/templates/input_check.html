@@ -13,7 +13,62 @@
 
 		<title>入力チェックページ</title>
 	</head>
-<body>
-
-</body>
+	<body>
+		<div class="container">
+			<div class="row align-items-center">
+				<div class="col"></div>
+				<div class="col">
+					<br>
+					<h4>入力情報確認</h4>
+					<table class="table" th:object = "${user_input}">
+						<tbody>
+							<tr>
+								<th scope="row">Pen Name : </th>
+								<td th:text = "*{penName}"></td>
+							</tr>
+							<tr>
+								<th scope="row">Email : </th>
+								<td th:text = "*{eMail}"></td>
+							</tr>
+							<tr>
+								<th scope="row">Password : </th>
+								<td th:text = "*{password}"></td>
+							</tr>
+							<tr>
+								<th scope="row">BirthDay : </th>
+								<td th:text = "*{birthYear} + 年 + *{birthMonth} + 月 + *{birthDay} + 日"></td>
+							</tr>
+							<tr>
+								<th scope="row">User Category : </th>
+								<td th:text = "*{userCategory}"></td>
+							</tr>
+						</tbody>
+					</table>
+					<form th:action = "@{/signup}" th:object = "${user_input}" th:method = "get">
+						<div class="d-grid gap-2 col-6">
+							<button class="btn btn-primary" type="submit">Return</button>
+						</div>
+					</form>
+					<br>
+					<form th:action = "@{/signup/complete}" th:object = "${user_input}" th:method = "post">
+						<input type = "hidden" th:field="*{penName}" >
+						<input type = "hidden" th:field="*{eMail}" >
+						<input type = "hidden" th:field="*{password}" >
+						<input type = "hidden" th:field="*{birthYear}" >
+						<input type = "hidden" th:field="*{birthMonth}" >
+						<input type = "hidden" th:field="*{birthDay}" >
+						<input type = "hidden" th:field="*{userCategory}" >
+						<div class="d-grid gap-2 col-6">
+							<button class="btn btn-primary" type="submit">Sign Up!</button>
+						</div>
+					</form>
+						<br><br>
+					<form th:action = "@{/fool}" th:method = "get">
+						<button class="btn btn-primary" type="submit">To Top</button>
+					</form>
+				</div>
+				<div class="col"></div>
+			</div>
+		</div>>
+	</body>
 </html>

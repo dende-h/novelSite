@@ -11,6 +11,6 @@ public class SignUpUser {
 	private long birthYear;
 	private long birthMonth;
 	private long birthDay;
-	private long userCategoryId;
+	private String userCategory;
 	
 }

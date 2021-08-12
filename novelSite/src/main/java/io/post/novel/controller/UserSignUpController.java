@@ -43,16 +43,31 @@ public class UserSignUpController {
 		
 		model.addAttribute("user_input", userRequest);
 		
-		/*System.out.println(userRequest.getPenName() コンソールの出力チェック
+		System.out.println(userRequest.getPenName() //コンソールの出力チェック
 				+ userRequest.getEMail()
 				+ userRequest.getPassword()
 				+ userRequest.getBirthYear() + "年"
-				+ userRequest.getUserCategoryId());
-		*/
+				+ userRequest.getUserCategory());
+		
 		return "input_check";
 	
 	}
 	
+	@RequestMapping(value = "/signup/complete", method = RequestMethod.POST)
+	public String signUp(@ModelAttribute UserRequest userAdd,Model model) {
+		
+		System.out.println(userAdd.getPenName() //コンソールの出力チェック
+				+ userAdd.getEMail()
+				+ userAdd.getPassword()
+				+ userAdd.getBirthYear() + "年"
+				+ userAdd.getUserCategory());
+		
+		userSignUpService.create(userAdd);
+		//User user = userService.userDisplay(userAdd);
+		//model.addAttribute("user_info", user);
+		
+		return "sign_up";
+	}
 	
 	
 	

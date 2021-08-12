@@ -13,7 +13,7 @@ public class UserRequest implements Serializable {
 	private long birthYear;
 	private long birthMonth;
 	private long birthDay;
-	private long userCategoryId;
+	private String userCategory;
 	
 	
 }
