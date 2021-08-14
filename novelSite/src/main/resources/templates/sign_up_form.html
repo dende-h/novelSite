@@ -20,6 +20,11 @@
 				<div class="col">
 					<br>
 					<h4>新規登録情報入力フォーム</h4>
+					<table>
+						<tr th:if="${validationError}" th:each="error : ${validationError}">
+							<td style="color: red;" th:text="${error}"></td>
+						</tr>
+					</table>
 					<form th:action = "@{/input/check}" th:object = "${user_input}" th:method = "post">
 						<div class="d-grid gap-2 col-6">
 							<div class="mb-3">
@@ -37,7 +42,7 @@
 							<div class="mb-3">
 								<label class="form-label" for="birthYearSelect">Birth Day</label>
 								<select class="form-select" id="userCategorySelect" name = "birthYear" >
-									<option selected>西暦</option>
+									<option selected value = "0" >西暦</option>
 									<option value="1921">1921</option>
 									<option value="1922">1922</option>
 									<option value="1923">1923</option>
@@ -145,7 +150,7 @@
 									<option value="2025">2025</option>
 								</select>
 								<select class="form-select" id="userCategorySelect" name = "birthMonth" >
-									<option selected>月</option>
+									<option selected value = "0">月</option>
 									<option value="1">1</option>
 									<option value="2">2</option>
 									<option value="3">3</option>
@@ -160,7 +165,7 @@
 									<option value="12">12</option>
 								</select>
 								<select class="form-select" id="userCategorySelect" name = "birthDay" >
-									<option selected>日</option>
+									<option selected value = "0">日</option>
 									<option value="1">1</option>
 									<option value="2">2</option>
 									<option value="3">3</option>
@@ -197,7 +202,7 @@
 							<div class="mb-3">
 								<label class="form-label" for="userCategorySelect">Usesr Category</label>
 								<select class="form-select" id="userCategorySelect" name = "userCategory">
-									<option selected>Choose...</option>
+									<option selected value = " " >Choose...</option>
 									<option value="Writer">Writer</option>
 									<option value="Reader">Reader</option>
 									<option value="Painter">Painter</option>

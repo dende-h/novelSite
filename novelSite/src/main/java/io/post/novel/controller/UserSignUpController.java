@@ -1,8 +1,13 @@
 package io.post.novel.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -39,14 +44,31 @@ public class UserSignUpController {
 	 * @return 入力確認
 	 */
 	@RequestMapping(value = "/input/check", method = RequestMethod.POST)
-	public String inputCheckDisplay(@ModelAttribute @Validated UserRequest userRequest, Model model) {
+	public String inputCheckDisplay(@ModelAttribute @Validated UserRequest userRequest, BindingResult result , Model model) {
+		System.out.println(userRequest.getPenName() //コンソールの出力チェック
+				+ userRequest.getEMail()
+				+ userRequest.getPassword()
+				+ "西暦" + userRequest.getBirthYear() + "年"
+				+ userRequest.getBirthMonth() + "月"
+				+ userRequest.getBirthDay() + "日"
+				+ userRequest.getUserCategory());
+		  if (result.hasErrors()) {
+	            List<String> errorList = new ArrayList<String>();
+	            for (ObjectError error : result.getAllErrors()) {
+	                errorList.add(error.getDefaultMessage());
+	            }
+	            model.addAttribute("validationError", errorList);
+	            return "sign_up_form";
+	        }
 		
 		model.addAttribute("user_input", userRequest);
 		
 		System.out.println(userRequest.getPenName() //コンソールの出力チェック
 				+ userRequest.getEMail()
 				+ userRequest.getPassword()
-				+ userRequest.getBirthYear() + "年"
+				+ "西暦" + userRequest.getBirthYear() + "年"
+				+ userRequest.getBirthMonth() + "月"
+				+ userRequest.getBirthDay() + "日"
 				+ userRequest.getUserCategory());
 		
 		return "input_check";
