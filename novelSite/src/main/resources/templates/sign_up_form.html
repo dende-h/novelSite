@@ -20,24 +20,22 @@
 				<div class="col">
 					<br>
 					<h4>新規登録情報入力フォーム</h4>
-					<table>
-						<tr th:if="${validationError}" th:each="error : ${validationError}">
-							<td style="color: red;" th:text="${error}"></td>
-						</tr>
-					</table>
-					<form th:action = "@{/input/check}" th:object = "${user_input}" th:method = "post">
+					<form th:action = "@{/input/check}" th:object = "${userRequest}" th:method = "post">
 						<div class="d-grid gap-2 col-6">
 							<div class="mb-3">
 								<label for="penNameInput" class="form-label">Pen Name</label>
 								<input type="text" name = "penName"  class="form-control" id="penNameInput" placeholder="ペンネーム全角25文字以内">
+								<span style="color: red;" th:if="${#fields.hasErrors('penName')}" th:errors="*{penName}"></span>
 							</div>
 							<div class="mb-3">
 								<label for="eMailInput" class="form-label">Email</label>
 								<input type="text" name = "eMail" class="form-control" id="eMailInput" placeholder="Eメールアドレス" >
+								<span style="color: red;" th:if="${#fields.hasErrors('eMail')}" th:errors="*{eMail}"></span>
 							</div>
 							<div class="mb-3">
 								<label for="passWordInput" class="form-label">Pass Word</label>
 								<input type="text" name = "password" class="form-control" id="passWordInput" placeholder="パスワード半角英数字8文字以上20文字以内" >
+								<span style="color: red;" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></span>
 							</div>
 							<div class="mb-3">
 								<label class="form-label" for="birthYearSelect">Birth Day</label>
@@ -149,6 +147,7 @@
 									<option value="2024">2024</option>
 									<option value="2025">2025</option>
 								</select>
+								<span style="color: red;" th:if="${#fields.hasErrors('birthYear')}" th:errors="*{birthYear}"></span>
 								<select class="form-select" id="userCategorySelect" name = "birthMonth" >
 									<option selected value = "0">月</option>
 									<option value="1">1</option>
@@ -164,6 +163,7 @@
 									<option value="11">11</option>
 									<option value="12">12</option>
 								</select>
+								<span style="color: red;" th:if="${#fields.hasErrors('birthYear')}" th:errors="*{birthMonth}"></span>
 								<select class="form-select" id="userCategorySelect" name = "birthDay" >
 									<option selected value = "0">日</option>
 									<option value="1">1</option>
@@ -198,6 +198,7 @@
 									<option value="30">30</option>
 									<option value="31">31</option>
 								</select>
+								<span style="color: red;" th:if="${#fields.hasErrors('birthYear')}" th:errors="*{birthDay}"></span>
 							</div>
 							<div class="mb-3">
 								<label class="form-label" for="userCategorySelect">Usesr Category</label>
@@ -207,6 +208,7 @@
 									<option value="Reader">Reader</option>
 									<option value="Painter">Painter</option>
 								</select>
+								<span style="color: red;" th:if="${#fields.hasErrors('userCategory')}" th:errors="*{userCategory}"></span>
 							</div>
 							<button class="btn btn-primary" type="submit">Confimation</button>
 						</div>
