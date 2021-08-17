@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Positive;
 import javax.validation.constraints.Size;
 
@@ -23,7 +24,8 @@ public class UserRequest implements Serializable {
 	
 	
 	@NotBlank(message = "パスワードは必須項目です")
-	@Size(max = 20, min = 8 , message = "passwordは8桁以上20桁以内の半角英数字で設定してください")
+	@Size(max = 20, min = 8 , message = "8桁以上20桁以内で設定してください")
+	@Pattern(regexp = "^[a-zA-Z0-9]+$", message = "半角英数字で設定してください")
 	private String password;
 	
 	
