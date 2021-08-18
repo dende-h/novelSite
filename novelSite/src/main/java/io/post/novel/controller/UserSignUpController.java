@@ -25,16 +25,16 @@ public class UserSignUpController {
 	 */
 	@GetMapping("/top")
 	public String topDislay(){
-		return "top";
+		return "top/top";
 	}
 	
 	
 	/*
 	 * @return サインアップフォーム
 	 */
-	@GetMapping("/signup")
+	@RequestMapping("/signup")
 	public String signUpForm(@ModelAttribute UserRequest usesrRequest) {
-		return "sign_up_form";
+		return "signup/sign_up_form";
 	}
 	
 	/*
@@ -54,7 +54,7 @@ public class UserSignUpController {
 		*/
 		  if (result.hasErrors()) {
 			  
-			  return "sign_up_form";
+			  return "signup/sign_up_form";
 	        }
 		
 		model.addAttribute("user_input", userRequest);
@@ -69,9 +69,11 @@ public class UserSignUpController {
 				+ userRequest.getUserCategory());
 		*/
 		
-		return "input_check";
-	
+		return "signup/input_check";
 	}
+	/*
+	 * 登録処理実施＞トップ画面へリダイレクト
+	 */
 	
 	@RequestMapping(value = "/signup/complete", method = RequestMethod.POST)
 	public String signUp(@ModelAttribute UserRequest userAdd,Model model) {
