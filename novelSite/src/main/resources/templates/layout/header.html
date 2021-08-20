@@ -8,9 +8,9 @@
 	<nav layout:fragment="header" class =" navbar navbar-inverse navbar-fixed-top navbar-dark bg-dark">
 		<div class = "container-fluid">
 			<div class = "navbar-header">
-				<a class = "navbar-brand " href="#"></a>
+				<a class = "navbar-brand " href="#">ノベルページ</a>
 			</div>
-			<form th:action = "@{/signout}" th:method = "post">
+			<form th:action = "@{/signout}" th:method = "get">
 				<button class ="btn btn-link pull-right navbar-brand" type = "submit" th:text = "#{signout}"></button>
 			</form>
 		</div>

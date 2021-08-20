@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+		xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+			layout:decorate="~{layout/layout}">
+<head>
+
+		<!-- 個別 CSS -->
+		<link	th:href="@{/css/user/user_page.css}"
+				rel="stylesheet">
+		<title>ユーザーページ</title>
+	</head>
+<body>
+	<div layout:fragment = "content">
+		<div class = "header border-bottom">
+			<h1 class = "h2">ユーザーインフォ</h1>
+			<table class="table" th:object = "${user_info}">
+						<tbody>
+							<tr>
+								<th scope="row" th:text = "#{PenName}">:</th>
+								<td th:text = "*{penName}"></td>
+							</tr>
+							<tr>
+								<th scope="row" th:text = "#{Email}">:</th>
+								<td th:text = "*{eMail}"></td>
+							</tr>
+							<tr>
+								<th scope="row" th:text = "#{Password}">:</th>
+								<td th:text = "*{password}"></td>
+							</tr>
+							<tr>
+								<th scope="row" th:text = "#{BirthDay}">:</th>
+								<td th:text = "*{birthYear} + 年 + *{birthMonth} + 月 + *{birthDay} + 日"></td>
+							</tr>
+							<tr>
+								<th scope="row" th:text = "#{UserCategory}">:</th>
+								<td th:text = "*{userCategory}"></td>
+							</tr>
+						</tbody>
+					</table>
+		</div>
+	</div>
+</body>
+</html>

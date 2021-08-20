@@ -27,15 +27,15 @@
 					<br><br><br>
 					<h4 th:text = "#{to.signin}"></h4>
 					<br>
-					<form th:action = "@{/user/top}" th:method = "post">
+					<form th:action = "@{/user/user_page}" th:object = "${userName}" th:method = "post">
 						<div class="d-grid gap-2 col-6">
 							<div>
 								<a th:text= "#{PenName}"></a>
-								<input type="text"/>
+								<input type="text" name="penName"/>
 							</div>
 							<div>
 								<a th:text= "#{Password}"></a>
-								<input type="password"/>
+								<input type="password" name="password"/>
 							</div>
 							<button class="btn btn-primary" type="submit" th:text = "#{signin}"></button>
 						</div>

@@ -3,9 +3,6 @@
 		xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 			layout:decorate="~{layout/layout}">
 <head>
-		<!-- Required meta tags -->
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
 
 		<!-- 個別 CSS -->
 		<link	th:href="@{/css/user/user_page.css}"
@@ -13,11 +10,16 @@
 		<title>ユーザーページ</title>
 	</head>
 <body>
-	<div lauout:fragment = "content">
-		<div class = "header border-bottom">
-			<h1 class = "h2">ユーザーページ</h1>
+	<div layout:fragment = "content">
+		<div class = "header border-bottom" th:object = "${user_name}">
+			<h1 class = "h2">のべるページ</h1>
+			<a th:text = "*{penName}"></a>
+			<form th:action = "@{/user/user_info}" th:object = "${user_name}" th:method = "post">
+				<input type = "hidden" name = penName th:field = "*{penName}" />
+			
+			<button type = "submit">ユーザインフォ</button>
+			</form>
 		</div>
 	</div>
-hello
 </body>
 </html>
