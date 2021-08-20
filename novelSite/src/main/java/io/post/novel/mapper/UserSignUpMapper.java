@@ -15,6 +15,6 @@ public interface UserSignUpMapper {
 	void create(UserRequest userAdd);
 
 	@Select("SELECT * FROM users WHERE pen_name = #{penName}")
-	SignUpUser userInfoSearch(UserRequest userInfo);
+	SignUpUser userInfoSearch(String penName);
 
 }
