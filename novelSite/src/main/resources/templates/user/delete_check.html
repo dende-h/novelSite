@@ -12,9 +12,9 @@
 <body>
 	<div layout:fragment = "content">
 		<div class = "header border-bottom">
-			<h1 class = "h2" th:text = "#{detail.info}"></h1>
+			<h1 class = "h2">退会情報確認</h1>
 			<br>
-			<table class="table" th:object = "${user_info}">
+			<table class="table" th:object = "${delete_user}">
 				<tbody>
 					<tr>
 						<th scope="row" th:text = "#{ID}">:</th>
@@ -46,11 +46,12 @@
 		<br>
 		<div class="container">
 			<div class="row align-items-center">
-				<div class="col"></div>
+				<div class="col"><p>※削除したデータは戻せません</p></div>
 				<div class="col">
-					<form th:action = "@{/user/user_info/edit/{id}(id=${user_info.id})}" th:method = "post">
+					<form th:action = "@{/user/user_delete/check/{id}(id=${delete_user.id})}" th:method = "post">
 						<div class="d-grid gap-2 col-6">
-							<button class="btn btn-primary" type="submit" th:text = "#{edit}"></button>
+							
+							<button class="btn btn-primary" type="submit" th:text = "削除"></button>
 						</div>
 					</form>
 				</div>

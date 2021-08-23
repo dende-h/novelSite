@@ -163,7 +163,7 @@
 									<option value="11">11</option>
 									<option value="12">12</option>
 								</select>
-								<span style="color: red;" th:if="${#fields.hasErrors('birthYear')}" th:errors="*{birthMonth}"></span>
+								<span style="color: red;" th:if="${#fields.hasErrors('birthMonth')}" th:errors="*{birthMonth}"></span>
 								<select class="form-select" id="userCategorySelect" name = "birthDay" >
 									<option selected value = "0" th:text = "#{Day}"></option>
 									<option value="1">1</option>
@@ -198,15 +198,16 @@
 									<option value="30">30</option>
 									<option value="31">31</option>
 								</select>
-								<span style="color: red;" th:if="${#fields.hasErrors('birthYear')}" th:errors="*{birthDay}"></span>
+								<span style="color: red;" th:if="${#fields.hasErrors('birthDay')}" th:errors="*{birthDay}"></span>
 							</div>
 							<div class="mb-3">
 								<label class="form-label" for="userCategorySelect" th:text = "#{UserCategory}"></label>
-								<select class="form-select" id="userCategorySelect" name = "userCategory">
+								<select class="form-select" id="userCategorySelect" name = "userCategory" >
 									<option selected value = " " >Choose...</option>
 									<option value="Writer" th:text = "#{Writer}"></option>
 									<option value="Reader" th:text = "#{Reader}"></option>
 									<option value="Painter" th:text = "#{Painter}"></option>
+									<option value="Actor" th:text = "#{Actor}"></option>
 								</select>
 								<span style="color: red;" th:if="${#fields.hasErrors('userCategory')}" th:errors="*{userCategory}"></span>
 							</div>

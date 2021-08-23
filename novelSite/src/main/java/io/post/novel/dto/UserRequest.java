@@ -12,7 +12,9 @@ import lombok.Data;
 
 @Data
 public class UserRequest implements Serializable {
-
+	
+	private long id;
+	
 	@NotBlank(message = "ペンネームは必須項目です")
 	@Size(max = 25, message = "ペンネームは25文字以内で設定してください")
 	private String penName;

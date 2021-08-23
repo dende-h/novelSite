@@ -5,6 +5,7 @@ import lombok.Data;
 @Data
 public class SignUpUser {
 
+	private long id;
 	private String penName;
 	private String eMail;
 	private String password;

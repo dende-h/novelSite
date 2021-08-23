@@ -2,10 +2,8 @@ package io.post.novel.mapper;
 
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Select;
 
 import io.post.novel.dto.UserRequest;
-import io.post.novel.entity.SignUpUser;
 
 @Mapper
 public interface UserSignUpMapper {
@@ -14,7 +12,5 @@ public interface UserSignUpMapper {
 			+ "VALUES (#{penName},#{eMail},#{password},#{birthYear},#{birthMonth},#{birthDay},#{userCategory})")
 	void create(UserRequest userAdd);
 
-	@Select("SELECT * FROM users WHERE pen_name = #{penName}")
-	SignUpUser userInfoSearch(String penName);
-
+	
 }
