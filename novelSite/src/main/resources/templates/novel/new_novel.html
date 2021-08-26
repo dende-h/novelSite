@@ -14,6 +14,7 @@
 			<div class = "header border-bottom">
 				<h1 class = "h2">小説を書くところ</h1>
 				<br>
+				<form th:action = "@{/novel/save/draft}" th:object = "${draft}" th:method = "post" id = "draft_save">
 				<table class="table">
 					<tbody>
 						<tr>
@@ -39,7 +40,7 @@
 						<tr>
 							<th>小説の長さ</th>
 							<td>
-								<select name = "Novel_length" >
+								<select name = "novelLength" >
 									<option selected value = "0" >長さを選択</option>
 									<option value="1">長編</option>
 									<option value="2">中編</option>
@@ -52,35 +53,36 @@
 						<tr>
 							<th>タイトル</th>
 							<td>
-								<textarea rows="1" cols="90"></textarea>
+								<textarea rows="1" cols="90" name = "title"></textarea>
 							</td>
 						</tr>
 						<tr>
 							<th>章管理</th>
 							<td>
-								<input type = "number" th:text = "章">
-								<input type = "number" th:text = "節">
-								<input type = "number" th:text = "項">
+								<input type = "number" name = "chapter" th:text = "章">
+								<input type = "number" name = "section" th:text = "節">
+								<input type = "number" name = "clause" th:text = "項">
 							</td>
 						</tr>
 						<tr>
 							<th>本文</th>
 							<td>
-								<textarea rows="20" cols="90"></textarea>
+								<textarea rows="20" cols="90" name = "text"></textarea>
 							</td>
 						</tr>
 					</tbody>
 				</table>
+				</form>
 			</div>
 			<br>
 			<div class="container">
 				<div class="row align-items-center">
 					<div class="col">
-					<!--<form th:action = "@{/user/user_info/edit/{id}(id=${user_info.id})}" th:method = "post">-->
+					
 							<div class="d-grid gap-2 col-6">
-								<button class="btn btn-primary" type="submit">下書きを保存</button>
+								<button form = "draft_save" class="btn btn-primary" type="submit">下書きを保存</button>
 							</div>
-					<!--</form>-->
+					
 					</div>
 					<div class="col">
 						<div class="d-grid gap-2 col-6">
