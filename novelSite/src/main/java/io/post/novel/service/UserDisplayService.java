@@ -1,18 +1,18 @@
 package io.post.novel.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import io.post.novel.dto.UserRequest;
 import io.post.novel.entity.SignUpUser;
 import io.post.novel.mapper.UserDisplayMapper;
-import io.post.novel.mapper.UserSignUpMapper;
 
 @Service
 public class UserDisplayService {
 
-	@Autowired UserSignUpMapper userSignUpMapper;
 	@Autowired UserDisplayMapper userDisplayMapper;
+	@Autowired PasswordEncoder encoder;
 	
 	public SignUpUser selectName(UserRequest userName) {
 		
@@ -33,6 +33,10 @@ public class UserDisplayService {
 
 	public void updateUserInfo(UserRequest userUpdate) {
 		
+		String rawPassword = userUpdate.getPassword();
+		userUpdate.setPassword(encoder.encode(rawPassword));
+		
+		
 		userDisplayMapper.updateUserInfo(userUpdate);
 		
 	}
@@ -49,8 +53,6 @@ public class UserDisplayService {
 		userDisplayMapper.delete(id);
 		
 	}
-
-	
 
 	
 }

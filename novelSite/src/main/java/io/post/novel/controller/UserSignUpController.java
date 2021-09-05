@@ -1,6 +1,7 @@
 package io.post.novel.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -19,6 +20,9 @@ public class UserSignUpController {
 	
 	@Autowired
 	UserSignUpService userSignUpService;
+	
+	@Autowired
+	PasswordEncoder encoder;
 	
 	/*
 	 * @return トップ画面
@@ -42,16 +46,8 @@ public class UserSignUpController {
 	 */
 	@PostMapping("/input/check")
 	public String inputCheckDisplay(@ModelAttribute @Validated UserRequest userRequest, BindingResult result , Model model) {
-		model.addAttribute("user_input", userRequest);
-		/*
-		 * System.out.println(userRequest.getPenName() //コンソールの出力チェック
-				+ userRequest.getEMail()
-				+ userRequest.getPassword()
-				+ "西暦" + userRequest.getBirthYear() + "年"
-				+ userRequest.getBirthMonth() + "月"
-				+ userRequest.getBirthDay() + "日"
-				+ userRequest.getUserCategory());
-		*/
+	
+		
 		  if (result.hasErrors()) {
 			  
 			  return "signup/sign_up_form";
@@ -86,6 +82,9 @@ public class UserSignUpController {
 				+ userAdd.getBirthYear() + "年"
 				+ userAdd.getUserCategory());
 		*/
+		String rawPassword = userAdd.getPassword();
+		userAdd.setPassword(encoder.encode(rawPassword));
+		
 		userSignUpService.create(userAdd);
 		
 		

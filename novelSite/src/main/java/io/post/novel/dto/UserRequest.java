@@ -46,5 +46,6 @@ public class UserRequest implements Serializable {
 	@NotBlank(message = "選択必須項目です")
 	private String userCategory;
 	
+	private String role;
 	
 }

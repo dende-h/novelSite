@@ -10,26 +10,28 @@
 				rel="stylesheet"
 				integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
 				crossorigin="anonymous">
-		<title th:text = "#{top}"></title>
+		<title>ログインページ</title>
 	</head>
 	<body>
 		<div class="container">
 			<div class="row align-items-center">
 				<div class="col"></div>
 				<div class="col">
-					<br>
-					<h4 th:text = "#{new.registration}"></h4>
-					<form th:action = "@{/signup}" th:method = "get">
-						<div class="d-grid gap-2 col-6">
-							<button class="btn btn-primary" type="submit" th:text = "#{user.signup.title}"></button>
-						</div>
-					</form>
 					<br><br><br>
 					<h4 th:text = "#{to.signin}"></h4>
 					<br>
-					<form th:action = "@{/sign_in}" th:method = "get">
+					<form th:action = "@{/user/user_page}" th:object = "${userName}" th:method = "post">
+						<p th:if = "${session['SPRING_SECURITY_LAST_EXCEPTION']}!=null" th:text = "${session['SPRING_SECURITY_LAST_EXCEPTION'].message}" class = "text-danger">ログインページ</p>
 						<div class="d-grid gap-2 col-6">
-							<button class="btn btn-primary" type="submit" >ログインページへ</button>
+							<div>
+								<a th:text= "#{PenName}"></a>
+								<input type="text" name="penName"/>
+							</div>
+							<div>
+								<a th:text= "#{Password}"></a>
+								<input type="password" name="password"/>
+							</div>
+							<button class="btn btn-primary" type="submit" th:text = "#{signin}"></button>
 						</div>
 					</form>
 				</div>

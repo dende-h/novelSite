@@ -33,5 +33,4 @@ public interface UserDisplayMapper {
 	void delete(String id);
 
 	
-
 }
