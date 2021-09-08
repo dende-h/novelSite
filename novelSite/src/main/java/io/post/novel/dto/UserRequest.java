@@ -1,7 +1,5 @@
 package io.post.novel.dto;
 
-import java.io.Serializable;
-
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
@@ -11,7 +9,7 @@ import javax.validation.constraints.Size;
 import lombok.Data;
 
 @Data
-public class UserRequest implements Serializable {
+public class UserRequest {
 	
 	private long id;
 	

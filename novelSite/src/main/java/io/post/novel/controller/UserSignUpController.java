@@ -82,8 +82,8 @@ public class UserSignUpController {
 				+ userAdd.getBirthYear() + "年"
 				+ userAdd.getUserCategory());
 		*/
-		String rawPassword = userAdd.getPassword();
-		userAdd.setPassword(encoder.encode(rawPassword));
+		//String rawPassword = userAdd.getPassword();
+		//userAdd.setPassword(encoder.encode(rawPassword));
 		
 		userSignUpService.create(userAdd);
 		

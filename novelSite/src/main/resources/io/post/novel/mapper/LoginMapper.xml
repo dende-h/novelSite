@@ -26,9 +26,6 @@
 					FROM	users,
 							(SELECT @RN := 0)	RC
 					WHERE	users.pen_name = #{penName}
-					AND		users.avf <= CURDATE()
-					ORDER BY avf DESC
-					
 					) RC
 		ON	   users.id = RC.id
         INNER JOIN user_roles
@@ -47,10 +44,8 @@
 			<result property = "penName" column = "pen_name" />
 			<result property = "eMail" column = "e_mail" />
 			<result property = "password" column = "password" />
-			<result property = "birthYear" column = "birth_year" />
-			<result property = "birthMonth" column = "birth_month" />
-			<result property = "birthDay" column = "birth_day" />
-			<result property = "userCategory" column = "user_category" />
+			<result property = "locked" column = "locked" />
+			<result property = "expired" column = "expired" />
 			<collection property="roles" ofType = "java.lang.String">
 				<result column = "role_name"/>
 			</collection>

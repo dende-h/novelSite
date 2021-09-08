@@ -7,5 +7,6 @@ import auth.UserForm;
 @Mapper
 public interface LoginMapper {
 
-	public UserForm identifyUser(String penName);
+	public UserForm identifyUser(String username);
+
 }

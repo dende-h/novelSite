@@ -19,7 +19,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		/*
 		//ユーザー情報取得
-		UserRequest loginUser = userDisplayService.getLoginUser(username);
+		UserForm loginUser = LoginService.getLoginUser(username);
 		
 		
 		//ユーザーが存在しない場合
@@ -38,6 +38,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 		UserDetails userDetails = (UserDetails) new User(loginUser.getPenName(),loginUser.getPassword(),authorities);
 		
 		*/
+		
 		return loginMapper.identifyUser(username);
 	}
 
