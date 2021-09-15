@@ -33,5 +33,8 @@ public interface UserDisplayMapper {
 	@Delete("DELETE FROM users WHERE id = #{id}")
 	void delete(String id);
 
+	//@Select("SELECT COUNT(*) FROM users WHERE id = #{id} AND password = #{password}")
+	//int findUserOne(PassValid passValid);
+
 	
 }

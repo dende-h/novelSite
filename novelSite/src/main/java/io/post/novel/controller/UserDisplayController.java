@@ -7,6 +7,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import io.post.novel.auth.UserForm;
+import io.post.novel.dto.PassValid;
 import io.post.novel.dto.UserEdit;
 import io.post.novel.dto.UserRequest;
 import io.post.novel.entity.SignUpUser;
@@ -27,6 +29,8 @@ import io.post.novel.service.UserDisplayService;
 public class UserDisplayController {
 	
 	@Autowired UserDisplayService userDisplayService;
+	
+	@Autowired PasswordEncoder encoder;
 
 
 	/*
@@ -84,7 +88,6 @@ public class UserDisplayController {
 	 */
 	@PostMapping("/user/user_info/edit/update")
 	public String userUpdate(@ModelAttribute @Validated UserEdit userEdit, BindingResult result,  Model model,@AuthenticationPrincipal UserForm userForm) {
-		userForm.getPenName();
 		
 		//受けとったリクエストの入力チェック
 		 if (result.hasErrors()) {
@@ -112,7 +115,8 @@ public class UserDisplayController {
 	 * ユーザーパースワード変更フォームへ移動
 	 */
 	@GetMapping("/user/password/edit")
-	public String toPassEdit() {
+	public String toPassEdit(Model model) {
+		model.addAttribute("pass_valid", new PassValid());
 		
 		return "user/edit_password";
 	}
@@ -121,7 +125,23 @@ public class UserDisplayController {
 	/*
 	 * ユーザーパスワードの入力チェック
 	 */
-	
+	@PostMapping("/user/password/edit/check")
+	public String passwordCheck(@ModelAttribute @Validated PassValid passValid, BindingResult result, Model model, @AuthenticationPrincipal UserForm userForm) {
+		
+		
+		if (result.hasErrors()) {
+			 	model.addAttribute("pass_valid", passValid);
+			  
+			  return "user/edit_password";//エラー時は自画面遷移
+	        }
+		//passValid.setId(userForm.getId());
+		//userDisplayService.findUserOne(passValid);
+		
+		boolean passCheck = encoder.matches(passValid.getPassword(), userForm.getPassword());
+		System.out.println(passCheck);
+		
+		return "redirect:/user/user_page";
+	}
 	
 
 	

@@ -55,5 +55,20 @@ public class UserDisplayService {
 		
 	}
 
+
+	/*public void findUserOne(PassValid passValid) {
+		
+		String rawPassword = passValid.getPassword();
+		passValid.setPassword(encoder.encode(rawPassword));
+		
+		int selectOne = 0;
+		
+		selectOne += userDisplayMapper.findUserOne(passValid);
+		
+		if(selectOne != 1) {
+			throw new RuntimeException();
+		}
+	}*/
+
 	
 }
