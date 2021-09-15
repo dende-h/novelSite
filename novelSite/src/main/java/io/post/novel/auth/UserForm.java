@@ -1,4 +1,4 @@
-package auth;
+package io.post.novel.auth;
 
 import java.util.Collection;
 import java.util.List;
@@ -13,11 +13,10 @@ import lombok.Data;
 @Data
 public class UserForm implements UserDetails {
 	
-	private static final long serialVersionUID = -4292831594774687625L;
+	private static final long serialVersionUID = 1L;
 	
     private long id;
 	private String penName;
-	private String eMail;
 	private String password;
 	private List<String> roles;
 	private boolean locked;

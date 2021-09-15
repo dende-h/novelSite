@@ -1,6 +1,12 @@
 package io.post.novel.controller;
 
+import java.security.Principal;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -10,8 +16,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import io.post.novel.auth.UserForm;
+import io.post.novel.dto.UserEdit;
 import io.post.novel.dto.UserRequest;
 import io.post.novel.entity.SignUpUser;
 import io.post.novel.service.UserDisplayService;
@@ -21,16 +28,22 @@ public class UserDisplayController {
 	
 	@Autowired UserDisplayService userDisplayService;
 
+
+	/*
+	 * ログイン後のユーザーメニューページ表示
+	 */
 	@RequestMapping("/user/user_page")
-	public String toUserPage(@ModelAttribute UserRequest userName, Model model) {
-		//System.out.println(userName);　出力チェック用
-		//SignUpUser getUser = userDisplayService.selectName(userName);
-		model.addAttribute("user_name",userName);
+	public String toUserPage(Model model, Principal principal) {
+		String loginUserName = principal.getName();
+		model.addAttribute("login_user",loginUserName);
 		
-	
 		return "user/user_page";
 	}
 	
+	
+	/*
+	 *ユーザー詳細ページ表示 
+	 */
 	@RequestMapping("/user/user_info/{penName}")
 	public String toUserInfo(@PathVariable("penName") String penName,Model model) {
 		
@@ -42,6 +55,9 @@ public class UserDisplayController {
 		return "user/user_info";
 	}
 	
+	/*
+	 * ユーザー情報編集ページ
+	 */
 	@PostMapping("/user/user_info/edit/{id}")
 	public String toUserEdit(@PathVariable("id") String id, @ModelAttribute UserRequest userEdit, Model model) {
 		//System.out.println(userEdit); 出力チェック用
@@ -51,17 +67,34 @@ public class UserDisplayController {
 		return "user/user_info_edit";
 		
 	}
-	@PostMapping("/user/user_info/edit/update")
-	public String UserUpdate(@ModelAttribute @Validated UserRequest userUpdate, BindingResult result,  Model model,RedirectAttributes redirectAttributes) {
-		System.out.println(userUpdate);
+	
+	/*
+	 * ユーザーパースワード変更フォームへ移動
+	 */
+	@GetMapping("/user/password/edit")
+	public String toPassEdit(/*@PathVariable("id") String id, Model model*/) {
 		
-		 /*if (result.hasErrors()) {
+		return "user/edit_password";
+		
+	}
+	
+	/*
+	 * ユーザー情報変更
+	 */
+	@PostMapping("/user/user_info/edit/update")
+	public String userUpdate(@ModelAttribute @Validated UserEdit userEdit, BindingResult result,  Model model,@AuthenticationPrincipal UserForm userForm) {
+		
+		
+		 if (result.hasErrors()) {
 			  
 			  return "user/user_info_edit";
-	        }*/
+	        }
 		
-		userDisplayService.updateUserInfo(userUpdate);
-		redirectAttributes.addFlashAttribute(userUpdate);
+		userDisplayService.updateUserInfo(userEdit);
+		userForm.setPenName(userEdit.getPenName());
+		
+		 SecurityContext auth = SecurityContextHolder.getContext();
+		 auth.setAuthentication(new UsernamePasswordAuthenticationToken(userForm.getPenName(), userForm.getPassword(),userForm.getAuthorities()));
 		
 		return "redirect:/user/user_page";
 

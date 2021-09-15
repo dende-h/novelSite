@@ -2,7 +2,7 @@ package io.post.novel.mapper;
 
 import org.apache.ibatis.annotations.Mapper;
 
-import auth.UserForm;
+import io.post.novel.auth.UserForm;
 
 @Mapper
 public interface LoginMapper {

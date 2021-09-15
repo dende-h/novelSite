@@ -5,6 +5,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
+import io.post.novel.dto.UserEdit;
 import io.post.novel.dto.UserRequest;
 import io.post.novel.entity.SignUpUser;
 
@@ -22,9 +23,9 @@ public interface UserDisplayMapper {
 	SignUpUser userEditSearch(String id);
 	
 	@Update("UPDATE users "
-			+ "SET pen_name = #{penName}, e_mail = #{eMail}, password = #{password},user_category = #{userCategory} "
+			+ "SET pen_name = #{penName}, e_mail = #{eMail}, user_category = #{userCategory} "
 			+ "WHERE id = #{id}")
-	void updateUserInfo(UserRequest userUpdate);
+	void updateUserInfo(UserEdit userEdit);
 
 	@Select("SELECT * FROM users WHERE pen_name = #{penName} AND password = #{password}")
 	SignUpUser deleteUserSelect(UserRequest deleteUser);

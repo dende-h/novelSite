@@ -23,6 +23,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	
 	@Bean
 	public PasswordEncoder passwordEncoder() {
+		/*
+		 * DBに入れるパスワード生成のためのコード
+		 *
+		BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
+		String password = "dende3641";
+				String loginPass = bCryptPasswordEncoder.encode(password);
+		System.out.println(loginPass);
+		*/
 		
 		return new BCryptPasswordEncoder();
 	}

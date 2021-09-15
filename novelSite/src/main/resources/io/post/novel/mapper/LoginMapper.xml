@@ -39,10 +39,9 @@
 		]]>
 		</select>
 		
-		<resultMap type="auth.UserForm" id="userDetails">
+		<resultMap type="io.post.novel.auth.UserForm" id="userDetails">
 			<result property = "id" column = "id" />
 			<result property = "penName" column = "pen_name" />
-			<result property = "eMail" column = "e_mail" />
 			<result property = "password" column = "password" />
 			<result property = "locked" column = "locked" />
 			<result property = "expired" column = "expired" />

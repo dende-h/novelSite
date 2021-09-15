@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import io.post.novel.dto.UserEdit;
 import io.post.novel.dto.UserRequest;
 import io.post.novel.entity.SignUpUser;
 import io.post.novel.mapper.UserDisplayMapper;
@@ -31,13 +32,13 @@ public class UserDisplayService {
 		return userDisplayMapper.userEditSearch(id);
 	}
 
-	public void updateUserInfo(UserRequest userUpdate) {
+	public void updateUserInfo(UserEdit userEdit) {
 		
-		String rawPassword = userUpdate.getPassword();
-		userUpdate.setPassword(encoder.encode(rawPassword));
+		//String rawPassword = userEdit.getPassword();
+		//userEdit.setPassword(encoder.encode(rawPassword));
 		
 		
-		userDisplayMapper.updateUserInfo(userUpdate);
+		userDisplayMapper.updateUserInfo(userEdit);
 		
 	}
 

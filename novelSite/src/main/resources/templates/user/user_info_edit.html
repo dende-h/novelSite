@@ -7,7 +7,7 @@
 		<!-- 個別 CSS -->
 		<link	th:href="@{/css/user/user_page.css}"
 				rel="stylesheet">
-		<title>情報編集</title>
+		<title>アカウント情報編集</title>
 	</head>
 <body>
 	<div layout:fragment = "content">
@@ -28,21 +28,14 @@
 							<th scope="row" th:text = "#{PenName}">:</th>
 							<td>
 								<input type="text" name = "penName" placeholder="25文字以内" th:field = "*{penName}">
-								<!--<span style="color: red;" th:if="${#fields.hasErrors('penName')}" th:errors="*{penName}"></span>-->
+								<span style="color: red;" th:if="${#fields.hasErrors('penName')}" th:errors="*{penName}"></span>
 							</td>
 						</tr>
 						<tr>
 							<th scope="row" th:text = "#{Email}">:</th>
 							<td>
 								<input type="text" name = "eMail" placeholder="メールアドレス" th:field = "*{eMail}">
-								<!--<span style="color: red;" th:if="${#fields.hasErrors('eMail')}" th:errors="*{eMail}"></span>-->
-							</td>
-						</tr>
-						<tr>
-							<th scope="row" th:text = "#{Password}">:</th>
-							<td>
-								<input type="text" name = "password" placeholder="半角英数8字以上20字以内" th:field = "*{password}">
-								<!--<span style="color: red;" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></span>-->
+								<span style="color: red;" th:if="${#fields.hasErrors('eMail')}" th:errors="*{eMail}"></span>
 							</td>
 						</tr>
 						<tr>
@@ -64,7 +57,7 @@
 									<option value="Painter" th:text = "#{Painter}"></option>
 									<option value="Actor" th:text = "#{Actor}"></option>
 								</select>
-								<!--<span style="color: red;" th:if="${#fields.hasErrors('userCategory')}" th:errors="*{userCategory}"></span>-->
+								<span style="color: red;" th:if="${#fields.hasErrors('userCategory')}" th:errors="*{userCategory}"></span>
 							</td>
 						</tr>
 					</tbody>
