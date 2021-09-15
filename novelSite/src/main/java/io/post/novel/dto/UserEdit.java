@@ -20,6 +20,16 @@ public class UserEdit {
 	@Email(message = "emailの形式で入力してください")
 	private String eMail;
 	
+	
+	private long birthYear;
+	
+	
+	private long birthMonth;
+	
+	
+	private long birthDay;
+	
+	
 	@NotBlank(message = "選択必須項目です")
 	private String userCategory;
 	
