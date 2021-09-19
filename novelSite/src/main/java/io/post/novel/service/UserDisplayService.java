@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import io.post.novel.dto.PassValid;
 import io.post.novel.dto.UserEdit;
 import io.post.novel.dto.UserRequest;
 import io.post.novel.entity.SignUpUser;
@@ -34,10 +35,6 @@ public class UserDisplayService {
 
 	public void updateUserInfo(UserEdit userEdit) {
 		
-		//String rawPassword = userEdit.getPassword();
-		//userEdit.setPassword(encoder.encode(rawPassword));
-		
-		
 		userDisplayMapper.updateUserInfo(userEdit);
 		
 	}
@@ -52,6 +49,14 @@ public class UserDisplayService {
 	public void delete(String id) {
 		
 		userDisplayMapper.delete(id);
+		
+	}
+
+
+	public void updatePass(PassValid passValid) {
+		
+		
+		userDisplayMapper.updatePass(passValid);
 		
 	}
 

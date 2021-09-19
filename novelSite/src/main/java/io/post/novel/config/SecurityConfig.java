@@ -74,7 +74,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 						.passwordParameter("password")	//ログインページのパスワード
 						.defaultSuccessUrl("/user/user_page",true)	//成功後の遷移先
 						.and()
-						.logout().logoutUrl("/loguot")
+						.logout().logoutUrl("/signout")
 						.invalidateHttpSession(true)
 						.deleteCookies("JSESSIONID");
 						

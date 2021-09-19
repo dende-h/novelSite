@@ -7,12 +7,12 @@
 		<!-- 個別 CSS -->
 		<link	th:href="@{/css/user/user_page.css}"
 				rel="stylesheet">
-		<title>ユーザーページ</title>
+		<title>退会ユーザー情報確認</title>
 	</head>
 <body>
 	<div layout:fragment = "content">
 		<div class = "header border-bottom">
-			<h1 class = "h2">退会情報確認</h1>
+			<h1 class = "h2">退会ユーザー情報確認</h1>
 			<br>
 			<table class="table" th:object = "${delete_user}">
 				<tbody>
@@ -27,10 +27,6 @@
 					<tr>
 						<th scope="row" th:text = "#{Email}">:</th>
 						<td th:text = "*{eMail}"></td>
-					</tr>
-					<tr>
-						<th scope="row" th:text = "#{Password}">:</th>
-						<td th:text = "*{password}"></td>
 					</tr>
 					<tr>
 						<th scope="row" th:text = "#{BirthDay}">:</th>
