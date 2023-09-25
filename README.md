@@ -1,7 +1,10 @@
 ## JavaとSpringbootの学習のためのサンプルCRUDアプリケーションです。
-アーキテクチャ構成は下記のような構成になります。
+- アーキテクチャ構成は下記のような構成になります。
+![Architecture drawio](https://github.com/dende-h/novelSite/assets/84645413/f63d7c46-fe1e-4edb-944b-31e1c99cf56b)
 
-![Architecture drawio](https://github.com/dende-h/novelSite/assets/84645413/1c8528e4-5729-41d0-9b28-eed29854e132)
+
+- ER図  
+![NovelSiteEntity drawio](https://github.com/dende-h/novelSite/assets/84645413/b4af5d74-68ec-4e3b-a759-e3981dae5692)
 
 ### 機能面:
 1. **ユーザー認証および認可:**
